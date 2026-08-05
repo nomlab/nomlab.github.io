@@ -1,3 +1,25 @@
 baseURL = 'https://nomlab.github.io/lab/nom'
 locale = 'ja'
 title = 'nomnichi'
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.goldmark.parser]
+wrapStandAloneImageWithinParagraph = false
+  [markup.goldmark.parser.attribute]
+    block = true
+
+[[menu.main]]
+name = "Articles"
+pageRef = "/articles"
+weight = 20
+
+[[menu.main]]
+name = "About"
+pageRef = "/about"
+weight = 30
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
