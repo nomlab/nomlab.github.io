@@ -1,0 +1,14 @@
++++
+title = '修了旅行'
+date =  '2014-03-25T15:31:51+09:00'
+draft = true
+showAuthor = true
+authors = ['yoshii']
++++
+
+平成26年度乃村研修了生は，<div>3月17,18日の<span style="line-height:1.5em;font-size:14px">1泊2日で</span><span style="line-height:1.5em;font-size:14px">修了旅行に行ってきました．</span></div><div><br>事前に目的地を<b>桃鉄</b>(桃太郎電鉄)で決めたところ，</div><div>千葉になりました．</div><div>こんなかんじの行き当たりばったりな旅行．<br><br>集合し，東京に降り立った後，</div><div>寄り道しながらゆっくりと千葉を目指します．</div><div><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px">〜修了旅行の日記1日目〜</span><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px"><br></span></div><div><span style="line-height:18px;font-size:14px">最初の目的地は・・・</span><span style="font-size:14px;line-height:18px">秋葉原！</span></div><div><span style="font-size:14px;line-height:18px">メイドカフェでデレデレのyoshiiさんが大変印象的でした．</span><span style="font-size:14px;line-height:18px">メイドさんに似顔絵も書いてもらい大満足のご様子．</span></div><div><span style="font-size:14px;line-height:18px"><br></span></div><div><span style="font-size:14px;line-height:18px">そのまま歩いて神田神社へ！</span></div><div><span style="font-size:14px;line-height:18px">ITお守りなるものを購入．</span><span style="font-size:14px;line-height:18px">現在サーバールームに設置しております．ご利益があるといいな・・・</span></div><div><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px;font-size:14px">次に向かったのは浅草寺！</span></div><div><span style="line-height:18px;font-size:14px">平日だというのに人が多く，すこし歩きづらかったです．観光名所なだけに外国人もいっぱい．</span></div><div><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px;font-size:14px">浅草からも見える</span><span style="line-height:18px;font-size:14px">スカイツリーへ歩きます！</span></div><div><span style="line-height:18px;font-size:14px">ikedaとkimuraはとても良い景色を楽しみました．なお</span><span style="font-size:14px;line-height:18px">yoshiiは高いところにビビって壁際で中腰でした．</span></div><div><span style="font-size:14px;line-height:18px"><br></span></div><div><span style="font-size:14px;line-height:18px">続いて，遠く電車とゆりかもめで</span><span style="line-height:18px;font-size:14px">お台場！</span></div><div><span style="line-height:18px;font-size:14px">とはいえもう時間が遅く，多くの施設がしまっていて残念です．フジテレビあたりで軽く運動し，宿へ向かいます．</span></div><div><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px;font-size:14px">そしてようやく千葉です．千葉の宿です．オーシャンビューのすてきなホテルです！</span></div><div><span style="line-height:18px">到着した頃には既にへとへと・・・ここで翌日の予定を適当に決めてすぐに寝ることになります．</span></div><div><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px;font-size:14px">〜修了旅行の日記2日目に続く〜</span></div><div><span style="line-height:18px;font-size:14px"><br></span></div><div><span style="line-height:18px;font-size:14px">予告：2日目に向かうのは・・・</span></div><div><ul><li><span style="font-size:14px">千葉駅</span><br></li>
+  <li>金谷港</li>
+  <li>久里浜港</li>
+  <li>横須賀</li>
+  <li>横浜中華街</li>
+</ul></div>
