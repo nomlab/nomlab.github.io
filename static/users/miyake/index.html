@@ -1,0 +1,87 @@
+<h2>三宅 貴義</h2>
+
+<hr>
+<h3>概要</h3>
+<dl>
+  <dt>ステータス:</dt>
+  <dd>博士後期課程3年，修士(工学)</dd>
+
+  <dt>所属:</dt>
+  <dd>
+    <a href="http://www.okayama-u.ac.jp">岡山大学</a>
+    <a href="https://www.elst.okayama-u.ac.jp/">大学院環境生命自然科学研究科環境生命自然科学専攻</a>
+    <a href="/lab/nom">乃村研究室</a>
+    <a href="/lab/nom/research/new/index.html">Newグループ</a>
+  </dd>
+
+  <dt>E-mail:</dt>
+  <dd>miyake(at)swlab.cs.okayama-u.ac.jp</dd>
+
+  <dt>所属学会:</dt>
+  <dd>情報処理学会，電子情報通信学会</dd>
+
+  <dt>各種リンク:</dt>
+  <dd>
+    <ul>
+      <li>GitHub: <a href="https://github.com/miyake13000">https://github.com/miyake13000</a></li>
+      <li>Researchmap: <a href="https://researchmap.jp/miyake2020">https://researchmap.jp/miyake2020</a></li>
+      <li>X (Twitter): <a href="https://x.com/miyake13000">https://x.com/miyake13000</a></li>
+    </ul>
+  </dd>
+</dl>
+
+<hr>
+<h3>経歴</h3>
+<ul>
+  <li>2017年(平成29年) 岡山県立玉野光南高校 普通科 卒業</li>
+  <li>2017年(平成29年) 岡山大学工学部情報系学科 入学</li>
+  <li>2021年(令和3年) 岡山大学工学部情報系学科 卒業</li>
+  <li>2021年(令和3年) 岡山大学大学院自然科学研究科電子情報システム工学専攻 入学</li>
+  <li>2023年(令和5年) 岡山大学大学院自然科学研究科電子情報システム工学専攻 卒業</li>
+  <li>2023年(令和5年) 岡山大学大学院環境生命自然科学研究科環境生命自然科学専攻 入学</li>
+</ul>
+
+<hr>
+<h3>研究</h3>
+<dt>テーマ1: ソフトウェア開発者の試行錯誤を支援するサンドボックス型バージョン管理システム</dt>
+<dd>
+  オープンソースソフトウェア(OSS)の普及に伴い，不具合に遭遇した際の原因調査や未知のソフトウェアの動作確認といった機会が増えている．
+  このような場合では，設定やソースコード，ファイル構成を変更してすぐに戻すという試行錯誤を行っていく．
+  コンテナやバージョン管理ツールはこのような用途を想定しておらず，一部要求は満たせるが，機能が不十分であったり実行時間の増大といった問題が発生する．
+  そこで，ソフトウェア開発者の試行錯誤を支援するため，ホストとコンテナの両環境を効率的にバージョン管理できるシステムを提案する．
+  <br>
+  提案システム: <a href="https://github.com/nomlab/orca">orca (GitHub)</a>
+</dd>
+
+<dt>テーマ2: MPI profiling interface を利用したジョブスケジューラとの協調機構の提案</dt>
+<dd>
+  High Performance Computing (HPC) では長時間実行されるジョブと短時間のジョブが混在して実行されている．
+  ここで，短時間実行のジョブは投入から実行までの時間 (TAT) が長くなる傾向がある．
+  これに対し，Slurmをはじめとする既存のジョブスケジューラでは，実行ジョブを切り替えることでTATの短縮を可能とする gang scheduling 機能を有している．
+  しかし，gang scheduling はジョブの状態・性質を無視して切替を行うため，切替時のオーバヘッド増加や柔軟な切替ができないといった問題がある．
+  そこで，MPI profiling interfaceを用いてMPI関数をオーバライドし，ジョブ自身でジョブスケジューラに実行状態・性質を通知することで，より柔軟なジョブ管理を実現する．
+  <br>
+  提案システム: <a href="https://github.com/nomlab/rapi">rapi (GitHub)</a>
+</dd>
+
+<dt>キーワード:</dt>
+<ul>
+  <li>コンテナ</li>
+  <li>仮想化</li>
+  <li>WebAssembly</li>
+  <li>HPC</li>
+  <li>スケジューリング</li>
+</ul>
+
+<dt>学会発表:</dt>
+<dd><a href="https://researchmap.jp/miyake2020">Researchmap を参照</a></dd>
+
+<dt>受賞歴:</dt>
+<dd>
+  <ul>
+    <li>FIT2021第20回情報科学技術フォーラム FIT奨励賞</li>
+    <li>2023年度 連合大会奨励賞 (第74回電気・情報関連学会中国支部連合大会，電子情報通信学会)</li>
+    <li>2023年度情報処理学会中国支部 優秀論文発表賞 (第74回電気・情報関連学会中国支部連合大会，情報処理学会)</li>
+  </ul>
+</dd>
+
