@@ -126,9 +126,9 @@
       {{ $finalLink := $taxonomyLink }}
       {{ $currentLang := site.Language.Name }}
       {{ if eq site.LanguagePrefix "" }}
-        {{ $finalLink = printf "%sauthors/%s/" $baseURL $author }}
+        {{ $finalLink = printf "%susers/%s/" $baseURL $author }}
       {{ else }}
-        {{ $finalLink = printf "%s%s/authors/%s/" $baseURL $currentLang $author }}
+        {{ $finalLink = printf "%s%s/users/%s/" $baseURL $currentLang $author }}
       {{ end }}
       {{ partial "author-extra.html" (dict "context" . "data" $authorData "link" $finalLink) }}
     {{- end -}}
