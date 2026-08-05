@@ -1,0 +1,8 @@
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  author = "authors"
+
+[article]
+  showWordCount = false
+  showReadingTime = false
