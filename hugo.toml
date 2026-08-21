@@ -11,6 +11,11 @@ wrapStandAloneImageWithinParagraph = false
     block = true
 
 [[menu.main]]
+name = "アクセス"
+pageRef = "/access"
+weight = 10
+
+[[menu.main]]
 name = "ノムニチ"
 pageRef = "/articles"
 weight = 20
