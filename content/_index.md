@@ -1,0 +1,29 @@
+---
+title: "乃村研究室"
+---
+
+**乃村研究室 - 岡山大学工学部情報系学科**
+
+## 研究室概要
+
+我々の研究室では， グループウェアとネットワークサービスの研究開発と， それらを通したソフトウェア開発の面白さを実践的に 習得することを目的としています．
+また，オペレーティングシステム(OS)とその周辺についての 研究開発と，それらを通じた計算機そのものへの 深い理解を得ることも目的としています．
+研究室の学生は，以下のプロジェクトのいずれかに 所属して研究開発を進めています．
+
+キーワード: グループウェア，分散処理，計算機ネットワーク，オペレーティングシステム
+
+## リンク
+
+- [構成員](https://gc.cs.okayama-u.ac.jp/lab/nom/members.html)
+- 研究紹介
+  - [グループウェアとネットワークサービスグループ(GN)](https://gc.cs.okayama-u.ac.jp/lab/nom/gn/index.html)
+  - [新しいOSに関する研究開発グループ(New)](https://gc.cs.okayama-u.ac.jp/lab/nom/research/new/index.html)
+  - [経済学部との連携](https://gc.cs.okayama-u.ac.jp/lab/nom/research/other/index.html)
+- 研究業績
+  - [発表論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/bibs/index.html)
+  - [学位論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/thesis/index.html)
+- [アクセス](https://gc.cs.okayama-u.ac.jp/lab/nom/access/index.html)
+
+## ノムニチ注目記事
+
+- [ノムニチとは?](/about)

@@ -1,6 +1,6 @@
 baseURL = 'https://nomlab.github.io/lab/nom'
 locale = 'ja'
-title = 'nomnichi'
+title = 'nomlab'
 
 [markup.goldmark.renderer]
 unsafe = true
@@ -11,7 +11,7 @@ wrapStandAloneImageWithinParagraph = false
     block = true
 
 [[menu.main]]
-name = "Articles"
+name = "ノムニチ"
 pageRef = "/articles"
 weight = 20
 

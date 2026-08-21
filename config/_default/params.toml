@@ -6,3 +6,7 @@
 [article]
   showWordCount = false
   showReadingTime = false
+
+[homepage]
+  layout = "nomlab"
+  showRecent = true
