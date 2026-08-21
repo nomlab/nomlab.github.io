@@ -23,7 +23,3 @@ title: "乃村研究室"
   - [発表論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/bibs/index.html)
   - [学位論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/thesis/index.html)
 - [アクセス](https://gc.cs.okayama-u.ac.jp/lab/nom/access/index.html)
-
-## ノムニチ注目記事
-
-- [ノムニチとは?](/about)

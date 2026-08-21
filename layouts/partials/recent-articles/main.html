@@ -6,6 +6,11 @@
   {{ end }}
   <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
 
+  <div class="flex">
+    <a href="{{ "about/" | relLangURL }}" class=" text-primary-600">ノムニチとは?</a>
+  </div>
+  <br>
+
   {{ if and .Site.Params.homepage.cardView (not .Site.Params.homepage.cardViewScreenWidth) | default false }}
     {{ partial "recent-articles/cardview.html" . }}
   {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
