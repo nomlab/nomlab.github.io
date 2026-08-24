@@ -21,5 +21,5 @@ title: "乃村研究室"
   - [経済学部との連携](https://gc.cs.okayama-u.ac.jp/lab/nom/research/other/index.html)
 - 研究業績
   - [発表論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/bibs/index.html)
-  - [学位論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/thesis/index.html)
+  - [学位論文一覧](thesis)
 - [アクセス](access)
