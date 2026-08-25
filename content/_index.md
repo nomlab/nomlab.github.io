@@ -18,7 +18,7 @@ title: "乃村研究室"
 - 研究紹介
   - [グループウェアとネットワークサービスグループ(GN)](https://gc.cs.okayama-u.ac.jp/lab/nom/gn/index.html)
   - [新しいOSに関する研究開発グループ(New)](https://gc.cs.okayama-u.ac.jp/lab/nom/research/new/index.html)
-  - [経済学部との連携](https://gc.cs.okayama-u.ac.jp/lab/nom/research/other/index.html)
+  - [経済学部との連携](research/other)
 - 研究業績
   - [発表論文一覧](https://gc.cs.okayama-u.ac.jp/lab/nom/bibs/index.html)
   - [学位論文一覧](thesis)
