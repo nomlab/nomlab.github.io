@@ -8,5 +8,4 @@ new:
 	printf "Title: %s-" "$$DATE"; read TITLE; \
 	SLUG=$$(echo "$$TITLE" | tr -s 'A-Z ' 'a-z-'); \
 	FILE="content/articles/$$DATE-$$SLUG/index.md"; \
-	hugo new "$$FILE"; \
-	sed -i '' "s/^title = .*/title = \"$$TITLE\"/" "$$FILE"
+	HUGO_TITLE=$$TITLE hugo new content "$$FILE"
