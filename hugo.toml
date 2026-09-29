@@ -33,3 +33,10 @@ weight = 30
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[security]
+  [security.http]
+    mediaTypes = [
+      '^image/x-icon$',
+      '^image/vnd\.microsoft\.icon$',
+    ]

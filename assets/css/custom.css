@@ -1,0 +1,117 @@
+/* ============================================================
+ * Custom CSS
+ *
+ * Custom styles specific to this site.
+ * Add styles here to customize the Blowfish theme or
+ * add styles for site-specific components and features.
+ *
+ * Organize styles by component or feature, and add a clear
+ * section comment for each group.
+ * ============================================================ */
+
+/* ============================================================
+ * Link Card
+ *
+ * Styles for the custom link-card shortcode.
+ * ============================================================ */
+.link-card {
+  --lc-border-color: rgba(0,0,0,0.15);
+  --lc-title-color: #000;
+  --lc-description-color: rgba(0, 0, 0, 0.60);
+  --lc-hostname-color: rgba(0, 0, 0, 0.80);
+}
+
+html.dark .link-card {
+  --lc-border-color: rgba(255,255,255,0.20);
+  --lc-title-color: #f5f5f5;
+  --lc-description-color: rgba(255, 255, 255, 0.65);
+  --lc-hostname-color: rgba(255, 255, 255, 0.80);
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  padding: 0 0 0 25px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: solid 2px var(--lc-border-color);
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.link-card:hover {
+  opacity: 0.6;
+  transition: 0.1s;
+}
+
+.link-card-content {
+  min-width: 0;
+  flex: 1;
+  padding-right: 25px;
+}
+
+.link-card-title {
+  color: var(--lc-title-color);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.link-card-description {
+  color: var(--lc-description-color);
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-card-hostname {
+  display: flex;
+  align-items: center;
+  height: 1.0em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-card-hostname-img {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.link-card-hostname-img img {
+  height: 100%;
+  width: auto;
+  margin-right: 0.3em;
+}
+
+.link-card-hostname span {
+  color: var(--lc-hostname-color);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.link-card-thumbnail {
+  flex-shrink: 0;
+  align-self: stretch;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.link-card-thumbnail img {
+  display: block;
+  height: 100%;
+  width: auto;
+  border-radius: 0;
+}

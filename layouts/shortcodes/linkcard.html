@@ -1,0 +1,220 @@
+{{- $url := (.Get "url") -}}
+{{- $targetURL := urls.Parse $url -}}
+{{- $remoteOptions := dict "timeout" "10s" -}}
+
+{{- $title := (.Get "title") -}}
+{{- $description := (.Get "description") -}}
+{{- $ogImageURL := "" -}}
+{{- $faviconURL := "" -}}
+{{- $pageHTML := "" -}}
+
+{{- /* Thumbnail display
+    Display the thumbnail by default.
+    Set "showThumbnail" to false to disable thumbnail display.
+*/ -}}
+{{- $showThumbnail := true -}}
+{{- if eq (.Get "showThumbnail") false -}}
+    {{- $showThumbnail = false -}}
+{{- end -}}
+
+{{- with try (resources.GetRemote $url $remoteOptions) -}}
+  {{- with .Err -}}
+    {{- warnf "link-card shortcode: failed to fetch remote resource from %q: %s" $url $.Position -}}
+  {{- else with .Value -}}
+    {{- $pageHTML = .Content -}}
+  {{- else -}}
+    {{- warnf "link-card shortcode: unable to get remote resource from %q: %s" $url $.Position -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with $pageHTML -}}
+    {{- with findRE `(?is)<head\b[^>]*>.*?</head\s*>` . -}}
+        {{- $head := index . 0 -}}
+
+        {{- /* Title
+            Determine the title in the following order:
+            1. The "title" parameter specified in the shortcode
+            2. The "og:title" meta tag
+            3. The HTML <title> tag
+        */ -}}
+        {{- if not $title -}}
+            {{- with findRE `(?is)<meta\b[^<>]*\bproperty\s*=\s*["']og:title["'][^<>]*>` $head -}}
+                {{- $ogTitleTag := index . 0 -}}
+                {{- with findRE `(?is)\bcontent\s*=\s*["'][^"']*["']` $ogTitleTag -}}
+                    {{- $title = replaceRE `(?is)^\s*content\s*=\s*["']|["']$` "" (index . 0) -}}
+                    {{- $title = $title | htmlUnescape | plainify | strings.TrimSpace -}}
+                {{- end -}}
+            {{- end -}}
+
+            {{- if not $title -}}
+                {{- with findRE `(?is)<title\b[^>]*>.*?</title\s*>` $head -}}
+                    {{- $rawTitle := replaceRE `(?is)^<title\b[^>]*>|</title\s*>$` "" (index . 0) -}}
+                    {{- $title = $rawTitle | htmlUnescape | plainify | strings.TrimSpace -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Description
+            Determine the description in the following order:
+            1. The "description" parameter specified in the shortcode
+            2. The "og:description" meta tag
+            3. The "description" meta tag
+        */ -}}
+        {{- if not $description -}}
+            {{- with findRE `(?is)<meta\b[^<>]*\bproperty\s*=\s*["']og:description["'][^<>]*>` $head -}}
+                {{- $ogDescriptionTag := index . 0 -}}
+                {{- with findRE `(?is)\bcontent\s*=\s*["'][^"']*["']` $ogDescriptionTag -}}
+                    {{- $description = replaceRE `(?is)^\s*content\s*=\s*["']|["']$` "" (index . 0) -}}
+                    {{- $description = $description | htmlUnescape | plainify | strings.TrimSpace -}}
+                {{- end -}}
+            {{- end -}}
+
+            {{- if not $description -}}
+                {{- with findRE `(?is)<meta\b[^<>]*\bname\s*=\s*["']description["'][^<>]*>` $head -}}
+                    {{- $descriptionTag := index . 0 -}}
+                    {{- with findRE `(?is)\bcontent\s*=\s*["'][^"']*["']` $descriptionTag -}}
+                        {{- $description = replaceRE `(?is)^\s*content\s*=\s*["']|["']$` "" (index . 0) -}}
+                        {{- $description = $description | htmlUnescape | plainify | strings.TrimSpace -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Thumbnail
+            Use the "og:image" meta tag as the thumbnail image.
+        */ -}}
+        {{- if $showThumbnail -}}
+            {{- with findRE `(?is)<meta\b[^<>]*\bproperty\s*=\s*["']og:image["'][^<>]*>` $head -}}
+                {{- $ogImageTag := index . 0 -}}
+
+                {{- with findRE `(?is)\bcontent\s*=\s*["'][^"']*["']` $ogImageTag -}}
+                    {{- $ogImage := replaceRE `(?is)^\s*content\s*=\s*["']|["']$` "" (index . 0) -}}
+                    {{- $ogImage = $ogImage | htmlUnescape | strings.TrimSpace -}}
+
+                    {{- if findRE `(?i)^https?://` $ogImage -}}
+                        {{- $ogImageURL = $ogImage -}}
+
+                        {{- /* Check the Cross-Origin-Resource-Policy (CORP) response header.
+                            If the CORP header is set to "same-origin" or "same-site", do not display the image.
+                        */ -}}
+                        {{- $ogImageOptions := dict
+                            "method" "GET"
+                            "responseHeaders" (slice "Cross-Origin-Resource-Policy")
+                            "timeout" "10s"
+                        -}}
+
+                        {{- with try (resources.GetRemote $ogImageURL $ogImageOptions) -}}
+                            {{- with .Err -}}
+                                {{- warnf "link-card shortcode: failed to fetch remote resource from %q: %s" $ogImageURL $.Position -}}
+                            {{- else with .Value -}}
+                                {{- $headers := .Data.Headers -}}
+                                {{- $corp := index $headers "Cross-Origin-Resource-Policy" -}}
+
+                                {{- if $corp -}}
+                                    {{- $corpValue := index $corp 0 -}}
+                                    
+                                    {{- if or (eq $corpValue "same-origin") (eq $corpValue "same-site") -}}
+                                        {{- $ogImageURL = "" -}}
+                                    {{- end -}}
+                                {{- end -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- /* Favicon
+            Determine the favicon URL in the following order:
+            1. The "icon" link tag
+            2. The "shortcut icon" link tag
+        */ -}}
+        {{- $linkTag := "" -}}
+        
+        {{- with findRE `(?is)<link\b[^<>]*\brel\s*=\s*["']?icon["']?[^<>]*>` $head -}}
+            {{- $linkTag = index . 0 -}}
+        {{- else with findRE `(?is)<link\b[^<>]*\brel\s*=\s*["']?shortcut\s+icon["']?[^<>]*>` $head -}}
+            {{- $linkTag = index . 0 -}}
+        {{- end -}}
+
+        {{- if $linkTag -}}
+            {{- $href := "" -}}
+        
+            {{- with findRE `(?is)\bhref\s*=\s*["'][^"']*["']` $linkTag -}}
+                {{- $href = replaceRE `(?is)^\s*href\s*=\s*["']|["']$` "" (index . 0) -}}
+            {{- else with findRE `(?is)\bhref\s*=\s*[^\s>]*` $linkTag -}}
+                {{- $href = replaceRE `(?is)^\s*href\s*=\s*` "" (index . 0) -}}
+            {{- end -}}
+            {{- $href = $href | htmlUnescape | strings.TrimSpace -}}
+
+            {{- with $href -}}
+                {{- with try ($targetURL.Parse .) -}}
+                    {{- with .Err -}}
+                        {{- warnf "link-card shortcode: invalid favicon href in %q: %s" $url $.Position -}}
+                    {{- else with .Value -}}
+                        {{- if in (slice "http" "https") .Scheme -}}
+                            {{- $faviconURL = .String -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- /* Favicon fallback
+        If no favicon URL was found in the link tags, try the following files in the root directory of the target URL:
+        /favicon.ico, /favicon.png, /favicon.gif
+    */ -}}
+
+    {{- if not $faviconURL -}}
+        {{- range $faviconExt := (slice ".ico" ".png" ".gif") -}}
+            {{- $rootFaviconPath := print $targetURL.Scheme "://" $targetURL.Hostname "/favicon" $faviconExt -}}
+            {{- with try (resources.GetRemote $rootFaviconPath $remoteOptions) -}}
+                {{- with .Err -}}
+                {{- else with .Value -}}
+                    {{- $faviconURL = $rootFaviconPath -}}
+                    {{- break -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Title fallback
+    If the title could not be determined, show a placeholder message.
+*/ -}}
+{{- if not $title -}}
+    {{- $title = "タイトルを取得できませんでした" -}}
+{{- end -}}
+
+<div class="link-card-wrapper">
+  <a href="{{- $url -}}" target="_blank" rel="noopener">
+    <div class="link-card">
+      <div class="link-card-content">
+        <div class="link-card-title">
+          {{- $title | truncate 100 -}}
+        </div>
+        {{- if $description -}}
+        <div class="link-card-description">
+          {{- $description | truncate 200 -}}
+        </div>
+        {{- end -}}
+        <div class="link-card-hostname">
+          {{ if $faviconURL }}
+          <div class="link-card-hostname-img">
+            <img alt="icon" src="{{- $faviconURL -}}" class="nozoom">
+          </div>
+          {{ end }}
+          <span>
+            {{- $targetURL.Hostname -}}
+          </span>
+        </div>
+      </div>
+      {{ if and $ogImageURL $showThumbnail }}
+      <div class="link-card-thumbnail">
+        <img alt="thumbnail" src="{{- $ogImageURL -}}" class="nozoom">
+      </div>
+      {{ end }}
+    </div>
+  </a>
+</div>

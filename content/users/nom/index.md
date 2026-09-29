@@ -1,4 +1,7 @@
-<h1>Yoshinari Nomura</h1>
++++
+title = '乃村 能成 (Yoshinari Nomura)'
+date =  '2026-09-29T00:00:00+09:00'
++++
 
 <img src="nom-portrait.jpg">
 <a href="./index-j.html"> Japanese&raquo;</a>
